@@ -1,325 +1,292 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* =========================================================
+   CEAC – folha de estilos principal (style.css)
+   ========================================================= */
+
+/* -------- Variáveis e base -------- */
+:root{
+  --azul: #0d47a1;
+  --azul2: #0b3b88;
+  --amarelo: #fff176;
+  --bege: #fffde7;
+  --vermelho: #c62828;
+  --sombra: 0 10px 24px rgba(0,0,0,.12);
 }
 
-/* BASE */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fff176;
-  color: #333;
-  line-height: 1.6;
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  font-family: system-ui, Arial, sans-serif;
+  background: var(--amarelo);
+  color:#143;
+}
+a{ color:inherit; text-decoration:none; }
+
+/* -------- Cabeçalho fixo -------- */
+header.site-topo{
+  position: sticky; top:0; z-index:1000;
+  background: linear-gradient(180deg, var(--azul), rgba(13,71,161,.85), rgba(13,71,161,0));
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+.topo{
+  max-width:1200px; margin:0 auto; padding:10px 16px;
+  display:flex; align-items:center; gap:14px;
+}
+.logo-circulo{
+  width:56px; height:56px; border-radius:50%;
+  background:#fff; display:grid; place-items:center;
+  border:2px solid #eaf2ff; box-shadow:0 4px 12px rgba(0,0,0,.15);
+  overflow:hidden; flex:0 0 56px;
+}
+.logo-circulo img{ width:80%; height:auto; display:block; }
+
+.titulo{ color:#fff; line-height:1.15; margin-right:auto; }
+.titulo strong{ display:block; font-weight:800; }
+.titulo small{ opacity:.9; }
+
+/* -------- Menu + submenu Área Pedagógica -------- */
+nav.menu{
+  display:flex; align-items:center; gap:18px;
+}
+nav.menu > a,
+.drop > button{
+  color:#fff; font-weight:700;
+  padding:8px 6px; border-bottom:2px solid transparent;
+}
+nav.menu > a:hover,
+.drop > button:hover{ border-color:#fff; }
+
+.drop{ position:relative; }
+.drop > button{
+  background:none; border:0; cursor:pointer;
+  display:flex; align-items:center; gap:6px;
+  font:inherit; color:#fff;
+}
+.drop ul{
+  position:absolute; top:100%; left:0;
+  min-width:220px; margin:8px 0 0; padding:8px;
+  list-style:none; border-radius:12px;
+  background:#fff; color:#122; box-shadow:var(--sombra);
+  display:none; /* abre no :hover (desktop) ou via JS (mobile) */
+}
+.drop:hover ul{ display:block; }
+.drop a{
+  display:block; padding:10px 12px; border-radius:8px; font-weight:600;
+}
+.drop a:hover{ background:#f3f6ff; }
+
+/* -------- Banner / Chamada -------- */
+.hero{
+  text-align:center; padding:48px 16px 28px;
+  background: linear-gradient(180deg, rgba(13,71,161,.06), rgba(13,71,161,0));
+}
+.hero h1{
+  margin:8px auto 8px;
+  font-size: clamp(1.6rem, 3.8vw, 2.2rem);
+  color:#0b2f6a;
+}
+.hero p{ margin:0 auto 18px; max-width:720px; }
+.botoes{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.btn{
+  display:inline-block; padding:12px 18px; border-radius:10px;
+  background:var(--azul); color:#fff; font-weight:800;
+  box-shadow: var(--sombra);
+  transition: transform .15s ease, opacity .15s ease;
+}
+.btn:hover{ transform:translateY(-2px); opacity:.95; }
+.btn.claro{ background:#fff; color:var(--azul); border:2px solid var(--azul); }
+.btn.wpp{ background:#ffffff; }
+
+/* -------- Cards/Seções centrais -------- */
+.card{
+  background: var(--bege);
+  width: min(1200px, 92%);
+  margin: 22px auto;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: var(--sombra);
+}
+.card h2{
+  margin:0 0 12px;
+  text-align:center;
 }
 
-/* CABEÇALHO */
-header {
-  background: linear-gradient(to bottom, #0d47a1, #1976d2, #fff176);
-  color: white;
-  text-align: center;
-  padding: 30px 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+/* >>> Cores dos títulos por seção (igual ao HTML que você pediu) */
+#sobre h2     { color:#1e88e5; } /* azul */
+#servicos h2  { color:#43a047; } /* verde */
+#servicos h3  { color:#f4511e; text-align:center; } /* laranja p/ "Atividades" */
+#diretora h2  { color:#8e24aa; } /* roxo */
+#historia h2  { color:#f9a825; } /* amarelo mostarda */
+#contato h2   { color:#e53935; } /* vermelho */
+
+/* >>> Ajuste do card/texto de "Sobre Nós" para caber melhor */
+#sobre.card { padding:16px 22px; }
+#sobre .sobre-txt { max-width:820px; margin:0 auto; text-align:justify; }
+
+/* -------- Serviços (linha + atividades) -------- */
+.servicos-linha{
+  text-align:center;
+  font-weight:700;
+}
+.servicos-linha span{
+  display:inline-block;
+  margin:6px 4px;
 }
 
-header h1 {
-  font-size: 28px;
-  margin-bottom: 15px;
+/* Atividades: 4 imagens lado a lado (mesma altura + legenda) */
+.fotos-4{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:14px;
+}
+.fotos-4 figure{
+  margin:0; background:#fff; border-radius:12px; overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,.07);
+  text-align:center;
+}
+.fotos-4 img{
+  width:100%; height:200px; object-fit:cover; display:block;
+}
+.fotos-4 figcaption{
+  padding:8px 10px; font-size:.95rem; text-align:center;
 }
 
-nav ul {
-  list-style: none;
+/* Diferenciais - layout */
+.diferenciais .dif-item {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
+  gap: 18px;
+  margin-bottom: 22px;
+  align-items: center;
 }
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 6px 12px;
-  border-bottom: 2px solid transparent;
-  transition: border 0.3s;
-}
-
-nav ul li a:hover {
-  border-bottom: 2px solid #ffeb3b;
-}
-
-/* SEÇÕES COMUM (CARDS) */
-section {
-  background-color: #fffde7;
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
-
-section h2 {
-  color: #0d47a1;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-section ul {
-  list-style: disc;
-  padding-left: 40px;
-  font-size: 16px;
-}
-
-/* SEÇÃO FACHADA SEM CARD */
-
-/* Seção da fachada */
-/* Container da imagem da fachada */
-.imagem-fachada {
-  display: flex;
-  justify-content: center;
-  margin: 40px auto 20px;
-  max-width: 800px; /* mesmo tamanho do card */
-  padding: 0 20px; /* espaçamento lateral para telas menores */
-}
-
-/* A própria imagem */
-.imagem-fachada img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px; /* opcional, só se quiser bordas suaves */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* leve sombra opcional */
-}
-
-
-#galeria {
-  text-align: center;
-  margin: 60px auto;
-}
-
-#galeria h2 {
-  color: #1a237e;
-  font-size: 26px;
-  margin-bottom: 30px;
-}
-
-.galeria-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  max-width: 1000px;
-  margin: 0 auto;
-  justify-items: center;
-}
-
-.galeria-container .card {
-  background-color: #fffde7;
-  padding: 15px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 300px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
-}
-
-.galeria-container .card img {
-  width: 100%;
-  height: 200px;
+.diferenciais .dif-item img {
+  width: 200px;
+  height: 150px;
   object-fit: cover;
   border-radius: 10px;
+  box-shadow: var(--sombra);
 }
 
-.galeria-container .card p {
-  margin-top: 12px;
-  font-weight: 500;
-  color: #555;
-}
-
-/* FOTO REDONDA DIRETORA */
-.foto-redonda {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-  margin: 0 auto 20px;
-  border: 4px solid #0d47a1;
-}
-
-/* ÍCONES LATERAIS */
-.icones-laterais {
-  position: fixed;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
+.diferenciais .dif-texto {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  z-index: 999;
+  justify-content: center; /* texto centralizado verticalmente */
 }
 
-.icones-laterais {
-  position: fixed;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  z-index: 999;
+.diferenciais h3 {
+  margin: 0 0 8px;
+  font-weight: 800;
 }
 
-.icones-laterais .icone {
-  width: 50px;
-  height: 50px;
-  background-color: #000; /* preto */
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, transform 0.2s;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
+/* Cores dos títulos dos diferenciais */
+.titulo-principal { color: var(--azul2); }
+.titulo-azul { color: #1565c0; }
+.titulo-vermelho { color: #2e7d32; }
+.titulo-verde { color: #1565c0; }
+.titulo-roxo { color: #2e7d32; }
+.titulo-laranja { color: #1565c0; }
 
-.icones-laterais .icone:hover {
-  background-color: #ffeb3b; /* amarelo */
-  transform: scale(1.1);
-}
-
-.icones-laterais .icone img {
-  width: 26px;
-  height: 26px;
-  filter: invert(1); /* ícone branco sobre fundo preto */
-  transition: filter 0.3s;
-}
-
-.icones-laterais .icone:hover img {
-  filter: invert(0); /* ícone preto sobre fundo amarelo */
-}
-
-/* MAPA DE FUNDO */
-#localizacao {
-  position: relative;
-  margin-top: 40px;
-  padding: 0;
-}
-
-.mapa-fundo iframe {
-  width: 100%;
-  height: 400px;
-  display: block;
-  border: 0;
-  filter: brightness(0.8);
-}
-
-.mapa-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 247, 198, 0.6);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 2;
-  color: #0d47a1;
-}
-
-.mapa-overlay h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.mapa-overlay p {
-  font-size: 18px;
-  max-width: 90%;
-}
-
-/* RODAPÉ */
-footer {
-  background-color: #0d47a1;
-  color: white;
-  text-align: center;
-  padding: 20px 10px;
-  font-size: 14px;
-  margin-top: 0;
-}
-
-/* BOTÃO VOLTAR AO TOPO */
-#voltarTopo {
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  padding: 10px 15px;
-  font-size: 20px;
-  background-color: #0d47a1;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  display: none;
-  z-index: 999;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-#voltarTopo:hover {
-  background-color: #ffeb3b;
-  color: #0d47a1;
-  transform: scale(1.1);
-}
-
-/* RESPONSIVO */
-@media screen and (max-width: 600px) {
-  header h1 {
-    font-size: 22px;
-  }
-
-  nav ul {
+/* Responsivo */
+@media (max-width: 768px) {
+  .diferenciais .dif-item {
     flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
-
-  section {
-    margin: 20px 10px;
-    padding: 20px;
-  }
-
-  .galeria-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .icones-laterais {
-    left: 5px;
-  }
-
-  .foto-redonda {
-    width: 150px;
-    height: 150px;
-  }
-
-  .mapa-overlay h2 {
-    font-size: 20px;
-  }
-
-  .mapa-overlay p {
-    font-size: 16px;
+  .diferenciais .dif-item img {
+    width: 100%;
+    height: auto;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .fachada-container {
-    padding: 10px;
-    margin: 20px 10px;
-  }
+/* -------- Sobre / Diretora / Contato -------- */
+.sobre-txt{ max-width:900px; margin:0 auto; } /* (mantido; específico do #sobre acima) */
 
-  .fachada-img {
-    width: 100%;
-    max-width: 100%;
-  }
+.diretora{
+  display:grid; grid-template-columns: 240px 1fr; gap:16px; align-items:center;
+}
+.diretora img{
+  width:220px; height:220px; object-fit:cover;
+  border-radius:50%;
+  border:3px solid var(--azul);
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  background:#fff;
+}
+
+.contato-lista{
+  display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;
+}
+.contato-lista div{
+  background:#fff; border-radius:12px; padding:16px;
+  box-shadow:0 6px 18px rgba(0,0,0,.07);
+}
+.contato-lista strong{ display:block; margin-bottom:4px; }
+
+/* -------- Mapa com overlay clicável -------- */
+.mapa-wrap{
+  position:relative; border-radius:14px; overflow:hidden; box-shadow:var(--sombra);
+}
+.mapa-wrap iframe{
+  display:block; width:100%; height:380px; border:0;
+}
+.mapa-overlay{
+  position:absolute; inset:0; display:grid; place-items:center; pointer-events:none;
+}
+.mapa-overlay .cx{
+  background: rgba(255,255,255,.65);
+  padding:10px 14px; border-radius:12px;
+  text-align:center; color:#0b2f6a;
+}
+
+/* -------- Rodapé -------- */
+footer{
+  background: var(--azul2); color:#fff; text-align:center;
+  padding:22px 10px; margin-top:22px;
+}
+
+/* -------- Elementos fixos laterais -------- */
+.fixo-esq, .fixo-dir{
+  position:fixed; top:50%; transform:translateY(-50%);
+  display:grid; gap:10px; z-index:999;
+}
+.fixo-esq{ left:12px; }
+.fixo-dir{ right:12px; }
+
+.fix-ico, .fix-btn{
+  display:grid; place-items:center;
+  width:44px; height:44px; border-radius:50%;
+  background:#fff; box-shadow: var(--sombra);
+}
+.fix-ico img{ width:22px; height:22px; }
+
+.fix-btn small{ font-size:.65rem; padding:0 6px; text-align:center; }
+.fix-btn span{ display:none; }
+.fix-btn.whats{ background:#fbfcfc; color:#fff; }
+
+/* -------- Voltar ao topo -------- */
+.topo-btn{
+  position:fixed; right:14px; bottom:16px;
+  width:44px; height:44px; border-radius:50%;
+  background:#fff; box-shadow: var(--sombra);
+  display:grid; place-items:center; font-weight:900;
+  text-decoration:none; z-index:998;
+  opacity:0; pointer-events:none;
+  transition: opacity .2s, transform .2s;
+}
+.topo-btn.visivel{ opacity:1; pointer-events:auto; }
+.topo-btn:hover{ transform: translateY(-3px); }
+
+/* -------- Responsivo -------- */
+@media (max-width: 960px){
+  .fotos-4{ grid-template-columns: repeat(2, 1fr); }
+  .contato-lista{ grid-template-columns: 1fr; }
+  .diretora{ grid-template-columns: 1fr; justify-items:center; }
+  .titulo strong{ font-size:1rem; }
+}
+
+@media (max-width: 640px){
+  .logo-circulo{ width:48px; height:48px; }
+  .fotos-4 img{ height:170px; }
+  .fix-btn small{ display:none; }
+  .fix-btn span{ display:block; font-size:1.2rem; line-height:1; }
 }
