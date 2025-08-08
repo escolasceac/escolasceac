@@ -93,8 +93,8 @@
 
      <nav class="menu" aria-label="Menu principal">
         <div class="drop">
-          <button type="button" aria-haspopup="true" aria-expanded="false">Área Pedagógica ▾</button>
-          <ul aria-label="Submenu Área Pedagógica">
+          <button type="button" aria-haspopup="true" aria-expanded="false">Pedagógico ▾</button>
+          <ul aria-label="Submenu pedagógico">
             <li><a href="calendario.html" target="_blank" rel="noopener">Calendário Anual</a></li>
             <li><a href="materiais.html" target="_blank" rel="noopener">Lista de Materiais</a></li>
           </ul>
@@ -110,7 +110,7 @@
     </div>
   </header>
 
-  <!-- ================= BANNER / CHAMADA ================= -->
+<!-- ================= BANNER / CHAMADA ================= -->
 <section class="hero" id="inicio">
   <h1>Venha fazer parte da família CEAC</h1>
   <p>Há mais de uma década formando estudantes com seriedade, afeto e excelência.</p>
@@ -119,19 +119,59 @@
     <a class="btn claro" href="#sobre">Conheça nossa escola</a>
     <a class="btn" href="sobre.html">Saiba mais</a>
     <a class="btn wpp" href="https://wa.me/5592992375285?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20CEAC." target="_blank" rel="noopener">Agende uma visita</a>
-    <a class="btn claro" href="mailto:ceacescolas@gmail.com?subject=Trabalhe%20Conosco%20-%20Envio%20de%20Currículo">Trabalhe Conosco</a>
+  <!-- Botão com dropdown (abre/fecha sem JS externo) -->
+<div class="btn-email-wrap" id="trabalheWrap">
+  <button class="btn claro" type="button"
+          onclick="this.parentElement.classList.toggle('aberta')"
+          aria-haspopup="true" aria-expanded="false">
+    Trabalhe Conosco ▾
+  </button>
+
+  <div class="email-menu" role="menu" aria-hidden="true">
+    <a role="menuitem"
+       href="mailto:ceacescolas@gmail.com?subject=Trabalhe%20Conosco%20-%20Envio%20de%20Curriculo">
+      App de e‑mail (padrão)
+    </a>
+    <a role="menuitem" target="_blank" rel="noopener"
+       href="https://mail.google.com/mail/?view=cm&fs=1&to=ceacescolas@gmail.com&su=Trabalhe%20Conosco%20-%20Envio%20de%20Curriculo">
+      Gmail
+    </a>
+    <a role="menuitem" target="_blank" rel="noopener"
+       href="https://outlook.live.com/mail/0/deeplink/compose?to=ceacescolas@gmail.com&subject=Trabalhe%20Conosco%20-%20Envio%20de%20Curriculo">
+      Outlook.com
+    </a>
+    <a role="menuitem" target="_blank" rel="noopener"
+       href="https://compose.mail.yahoo.com/?to=ceacescolas@gmail.com&subject=Trabalhe%20Conosco%20-%20Envio%20de%20Curriculo">
+      Yahoo Mail
+    </a>
+  </div>
+</div>
+</div>
+  </div>
+
+  <!-- Redes sociais centralizadas -->
+  <div class="sociais-centro">
+    <a class="soc-ico" href="https://instagram.com/ceac.escolas" target="_blank" rel="noopener">
+      <img src="imagens/instagram.png" alt="Instagram do CEAC">
+      <span>@ceac.escolas</span>
+    </a>
+    <a class="soc-ico" href="https://facebook.com/ceacanacelia" target="_blank" rel="noopener">
+      <img src="imagens/facebook.png" alt="Facebook do CEAC">
+      <span>/ceacanacelia</span>
+    </a>
   </div>
 </section>
 
-  <!-- ================= (1) SOBRE NÓS ================= -->
-  <!-- menos padding + largura controlada para não sobrar espaço -->
-  <section id="sobre" class="card" aria-labelledby="tit-sobre" style="padding:16px 22px;">
-    <h2 id="tit-sobre" style="color:#1e88e5;">Sobre Nós</h2>
-    <div class="sobre-txt" style="max-width:820px; margin:0 auto; text-align:justify;">
-      <p>O Centro Educacional Ana Célia é uma instituição fundada com o objetivo de oferecer ensino de qualidade, aliando inovação pedagógica e cuidado individualizado. Nosso compromisso é formar cidadãos críticos, criativos e preparados para os desafios do futuro.</p>
-    </div>
-  </section>
-
+<!-- ================= SOBRE NÓS ================= -->
+<section id="sobre" class="card-secao">
+  <div class="card">
+    <h2 class="titulo-secao">Sobre Nós</h2>
+    <p>
+      O Centro Educacional Ana Célia é uma instituição fundada com o objetivo de oferecer ensino de qualidade, aliando inovação pedagógica e cuidado individualizado. Nosso compromisso é formar cidadãos críticos, criativos e preparados para os desafios do futuro.
+    </p>
+  </div>
+</section>
+  
   <!-- ================= (2) SERVIÇOS + ATIVIDADES (no MESMO card) ================= -->
   <section id="servicos" class="card" aria-labelledby="tit-servicos">
     <h2 id="tit-servicos" style="color:#43a047;">Serviços</h2>
@@ -290,23 +330,15 @@
     <p>© 2025 - Centro Educacional Ana Célia. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- ================= ÍCONES FIXOS (ESQUERDA) ================= -->
-  <div class="fixo-esq" aria-label="Redes sociais">
-    <a class="fix-ico" href="https://instagram.com/ceac.escolas" target="_blank" rel="noopener" aria-label="Instagram">
-      <img src="imagens/instagram.png" alt="">
-    </a>
-    <a class="fix-ico" href="https://facebook.com/ceacanacelia" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="imagens/facebook.png" alt="">
-    </a>
+  <!-- WhatsApp fixo no canto inferior esquerdo -->
+<a class="wpp-flutuante" href="https://wa.me/5592992375285?text=Olá!%20Gostaria%20de%20falar%20com%20o%20CEAC."
+   target="_blank" rel="noopener" aria-label="Fale Conosco no WhatsApp">
+  <img src="imagens/whatsapp.png" alt="">
+  <div class="txt">
+    <strong>Fale Conosco!</strong>
+    <small>WhatsApp</small>
   </div>
-
-  <!-- ================= BOTÕES FIXOS (DIREITA) ================= -->
-  <div class="fixo-dir" aria-label="Ações rápidas">
-    <a class="fix-btn" href="#contato" aria-label="Fale conosco"><small>Fale<br>conosco</small></a>
-    <a class="fix-btn whats" href="https://wa.me/5592992375285?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20CEAC." target="_blank" rel="noopener" aria-label="WhatsApp">
-      <img src="imagens/whatsapp.png" alt="" style="width:22px;height:22px">
-    </a>
-  </div>
+</a>
 
   <!-- ================= VOLTAR AO TOPO ================= -->
   <a href="#inicio" class="topo-btn" id="btnTopo" aria-label="Voltar ao topo">↑</a>
@@ -347,5 +379,13 @@
       });
     });
   </script>
+
+  <script>
+  document.addEventListener('click', (e) => {
+    const wrap = document.getElementById('trabalheWrap');
+    if (!wrap) return;
+    if (!e.target.closest('#trabalheWrap')) wrap.classList.remove('aberta');
+  });
+</script>
 </body>
 </html>

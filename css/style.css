@@ -97,6 +97,29 @@ nav.menu > a:hover,
 .btn.claro{ background:#fff; color:var(--azul); border:2px solid var(--azul); }
 .btn.wpp{ background:#ffffff; }
 
+/* Dropdown do botão Trabalhe Conosco */
+.btn-email-wrap{ position:relative; display:inline-block; }
+.email-menu{
+  position:absolute; top:100%; left:0;
+  min-width:260px; margin-top:6px; padding:8px;
+  background:#fff; color:#122; border-radius:12px;
+  box-shadow: var(--sombra);
+  display:none; z-index:1000;
+}
+.email-menu a{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 12px; border-radius:8px; font-weight:600; color:#122;
+}
+.email-menu a:hover{ background:#f3f6ff; }
+.email-menu img{ width:18px; height:18px; object-fit:contain; }
+
+/* quando aberto */
+.btn-email-wrap.aberta .email-menu{ display:block; }
+
+/* opcional: alinhar menu ao centro do botão (descomente se preferir centralizado)
+.email-menu{ left:50%; transform:translateX(-50%); }
+*/
+
 /* -------- Cards/Seções centrais -------- */
 .card{
   background: var(--bege);
@@ -244,24 +267,57 @@ footer{
   padding:22px 10px; margin-top:22px;
 }
 
-/* -------- Elementos fixos laterais -------- */
-.fixo-esq, .fixo-dir{
-  position:fixed; top:50%; transform:translateY(-50%);
-  display:grid; gap:10px; z-index:999;
+/* ===== Redes sociais abaixo do banner ===== */
+.sociais-centro{
+  margin: 14px auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
 }
-.fixo-esq{ left:12px; }
-.fixo-dir{ right:12px; }
-
-.fix-ico, .fix-btn{
-  display:grid; place-items:center;
-  width:44px; height:44px; border-radius:50%;
-  background:#fff; box-shadow: var(--sombra);
+.sociais-centro .soc-ico{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: var(--sombra);
+  font-weight: 700;
 }
-.fix-ico img{ width:22px; height:22px; }
+.sociais-centro .soc-ico img{
+  width: 20px; height: 20px;
+}
 
-.fix-btn small{ font-size:.65rem; padding:0 6px; text-align:center; }
-.fix-btn span{ display:none; }
-.fix-btn.whats{ background:#fbfcfc; color:#fff; }
+/* ===== WhatsApp flutuante (canto inferior esquerdo) ===== */
+.wpp-flutuante{
+  position: fixed;
+  left: 14px; bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  text-decoration: none;
+  z-index: 1100;
+}
+.wpp-flutuante img{
+  width: 26px; height: 26px;
+}
+.wpp-flutuante .txt{
+  line-height: 1.1;
+  color: #123;
+}
+.wpp-flutuante .txt strong{ display: block; }
+.wpp-flutuante:hover{ transform: translateY(-2px); }
+
+/* Evita sobrepor muito o conteúdo no mobile */
+@media (max-width: 600px){
+  .wpp-flutuante{ left: 10px; bottom: 10px; padding: 8px 10px; }
+  .wpp-flutuante img{ width: 22px; height: 22px; }
+  .sociais-centro .soc-ico span{ display:none; } /* deixa só os ícones */
+}
 
 /* -------- Voltar ao topo -------- */
 .topo-btn{
