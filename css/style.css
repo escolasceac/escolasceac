@@ -236,6 +236,63 @@ nav.menu > a:hover,
   background:#fff;
 }
 
+/* ===== Nossa História: texto à esquerda + thumbs 2x2 à direita ===== */
+:root{
+  /* Largura do thumb e proporção (ajuste se quiser menor/maior) */
+  --thumb-w: 220px;            /* deixe 120px se quiser ainda menor */
+  --thumb-gap: 12px;
+}
+
+.historia-grid{
+  display: grid;
+  grid-template-columns: 1fr auto;   /* esquerda ocupa o espaço, direita só o necessário */
+  align-items: start;
+  column-gap: 18px;
+}
+
+.historia-texto{
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+/* grade 2x2 colada à direita */
+.historia-fotos{
+  display: grid;
+  grid-template-columns: repeat(2, var(--thumb-w));
+  gap: var(--thumb-gap);
+  justify-content: end;        /* encosta na borda direita, igual ao seu rabisquinho */
+}
+
+.historia-fotos figure{
+  width: var(--thumb-w);
+  margin: 0;
+  text-align: center;
+}
+
+.historia-fotos img{
+  width: 100%;
+  aspect-ratio: 4 / 3;         /* mesma proporção pra todas (4:3) */
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.historia-fotos figcaption{
+  margin-top: 4px;
+  font-size: .85rem;
+  color: #555;
+}
+
+/* Responsivo: empilha no mobile e reduz thumbs */
+@media (max-width: 900px){
+  .historia-grid{ grid-template-columns: 1fr; row-gap: 14px; }
+  .historia-fotos{ justify-content: start; }
+}
+@media (max-width: 500px){
+  :root{ --thumb-w: 120px; --thumb-gap: 10px; } /* menorzinho no celular */
+}
+
 .contato-lista{
   display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;
 }
@@ -346,3 +403,104 @@ footer{
   .fix-btn small{ display:none; }
   .fix-btn span{ display:block; font-size:1.2rem; line-height:1; }
 }
+
+/* Ajustes apenas no celular (até 768px de largura) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* logo e menu empilhados */
+    text-align: center; /* centraliza texto */
+  }
+
+  header img {
+    max-width: 80px; /* diminui a logo */
+    margin-bottom: 5px;
+  }
+
+  nav ul {
+    flex-direction: column; /* menu em coluna */
+    gap: 8px;
+    background: #004aad; /* mantém o azul */
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  nav ul li {
+    display: block;
+  }
+}
+
+/* ========================== */
+/* KIT RÁPIDO DE RESPONSIVIDADE */
+/* Cole no FINAL do style.css  */
+/* ========================== */
+
+/* 1) Tipografia que escala */
+h1{ font-size: clamp(1.6rem, 4.5vw, 2.6rem); }
+h2{ font-size: clamp(1.2rem, 3.2vw, 1.8rem); }
+h3{ font-size: clamp(1rem, 2.4vw, 1.2rem); }
+body{ font-size: clamp(.95rem, 1.6vw, 1rem); line-height:1.55; }
+
+/* 2) Mídias fluidas */
+img, video{ max-width:100%; height:auto; display:block; }
+iframe{ max-width:100%; display:block; }
+.mapa-wrap iframe{ aspect-ratio: 16 / 9; height:auto; } /* mapa responsivo */
+
+/* 3) Botões adaptáveis */
+.botoes{ flex-wrap: wrap; gap: 10px; }
+.btn{ white-space: nowrap; }
+@media (max-width: 480px){
+  .botoes .btn{ flex:1 1 46%; text-align:center; } /* 2 por linha no mobile */
+}
+
+/* 4) Grids que “quebram” bonitos */
+.servicos-grid{ grid-template-columns: repeat(3,1fr); }
+@media (max-width: 960px){ .servicos-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){ .servicos-grid{ grid-template-columns: 1fr; } }
+
+.fotos-4{ grid-template-columns: repeat(4,1fr); }
+@media (max-width: 960px){ .fotos-4{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){ .fotos-4{ grid-template-columns: 1fr; } }
+
+/* “Nossa História”: texto à esquerda + fotos 2x2 à direita (miniaturas iguais) */
+:root{ --thumb-w: 140px; --thumb-gap: 12px; } /* ajuste aqui o tamanho das fotos */
+.historia-grid{ display:grid; grid-template-columns: 1fr auto; column-gap:18px; align-items:start; }
+.historia-texto{ display:grid; gap:12px; align-content:start; }
+.historia-fotos{ display:grid; grid-template-columns: repeat(2, var(--thumb-w)); gap: var(--thumb-gap); justify-content:end; }
+.historia-fotos figure{ width: var(--thumb-w); margin:0; text-align:center; }
+.historia-fotos img{ width:100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius:8px; }
+@media (max-width: 900px){
+  .historia-grid{ grid-template-columns: 1fr; row-gap:14px; }
+  .historia-fotos{ justify-content:start; }
+}
+@media (max-width: 500px){
+  :root{ --thumb-w: 120px; --thumb-gap: 10px; } /* menor no celular */
+}
+
+/* 5) Cards e textos mais compactos no mobile */
+.card{ width:min(1200px, 92%); padding: clamp(14px, 3vw, 22px); }
+.sobre-txt{ max-width: 900px; margin-inline:auto; }
+
+/* 6) Cabeçalho: menu hambúrguer só no celular (o desktop fica igual) */
+.menu-toggle{ display:none; }
+@media (max-width: 820px){
+  .topo{ flex-wrap:wrap; gap:10px; }
+  .titulo strong{ font-size:1.1rem; line-height:1.15; }
+  .titulo small{ font-size:.9rem; }
+  .menu-toggle{
+    display:block; margin-left:auto;
+    background:#fff; color:#0d47a1; border:0; border-radius:10px; padding:8px 12px; box-shadow:var(--sombra);
+  }
+  nav.menu{ display:none; width:100%; background:rgba(255,255,255,.08); border-radius:12px; padding:8px 6px; gap:10px; flex-wrap:wrap; }
+  nav.menu.aberta{ display:flex; }
+  .drop{ width:100%; }          /* submenu ocupa a largura toda */
+  .drop ul{ position:relative; inset:auto; width:100%; margin-top:6px; }
+}
+
+/* 7) WhatsApp flutuante não atrapalha no mobile */
+@media (max-width: 600px){
+  .wpp-flutuante{ left:10px; bottom:10px; padding:8px 10px; }
+  .wpp-flutuante img{ width:22px; height:22px; }
+}
+
+/* 8) Acessibilidade: mantém focos visíveis */
+a:focus, button:focus{ outline: 3px solid rgba(13,71,161,.35); outline-offset: 2px; }

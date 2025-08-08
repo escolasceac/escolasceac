@@ -35,7 +35,7 @@
     .btn{display:inline-block;padding:12px 18px;border-radius:10px;background:var(--azul);color:#fff;font-weight:800;box-shadow:var(--sombra)}
     .btn:hover{opacity:.95;transform:translateY(-2px)}
     .btn.claro{background:#fff;color:var(--azul);border:2px solid var(--azul)}
-    .btn.wpp{background:#25D366}
+    .btn.wpp{background:#15c04e}
     .card{background:var(--bege);width:min(1200px,92%);margin:22px auto;padding:22px;border-radius:14px;box-shadow:var(--sombra)}
     .card h2{margin:0 0 12px; text-align:center;}
     .servicos-linha{ text-align:center; font-weight:700; }
@@ -272,41 +272,78 @@
     </div>
   </section>
 
-  <!-- ================= (4) NOSSA HISTÓRIA (continua resumida) ================= -->
-  <section id="historia" class="card" aria-labelledby="tit-historia">
-    <h2 id="tit-historia" style="color:#43a047;">Nossa História</h2>
-    <p>Uma trajetória construída com dedicação e resultados. Veja mais registros do CEAC ao longo dos anos.</p>
-    <p style="text-align:center;"><a class="btn claro" href="sobre.html#historia">Ver mais registros</a></p>
-  </section>
+  <!-- ================= NOSSA HISTÓRIA ================= -->
+<section id="historia" class="card" aria-labelledby="tit-historia">
+  <h2 id="tit-historia" style="color:#43a047;">Nossa História</h2>
+
+  <div class="historia-grid">
+    <!-- LADO ESQUERDO: TEXTO + BOTÃO -->
+    <div class="historia-texto">
+      <p>
+        Uma trajetória construída com dedicação e resultados…<br>
+        Aqui vai um resumo maior que você ainda vai escrever,
+        contando marcos importantes, projetos e conquistas…
+      </p>
+
+      <a class="btn claro" href="sobre.html#historia">Ler Mais</a>
+    </div>
+
+    <!-- LADO DIREITO: 4 FOTOS 2x2 -->
+
+  <div class="historia-fotos">
+    <figure>
+      <img src="fotos-nossa-historia/frente2013.png" alt="2013"><figcaption>2013</figcaption>
+    </figure>
+    <figure>
+      <img src="fotos-nossa-historia/alunos2013.png" alt="2013"><figcaption>2013</figcaption>
+    </figure>
+    <figure>
+      <img src="fotos-nossa-historia/equipe2013.png" alt="2013"><figcaption>2013</figcaption>
+    </figure>
+    <figure>
+      <img src="fotos-nossa-historia/frente2018.png" alt="2018"><figcaption>2018</figcaption>
+    </figure>
+  </div>
+</div>
+
+</section>
 
   <!-- ================= (5) CONTATO ================= -->
-  <section id="contato" class="card" aria-labelledby="tit-contato">
-    <h2 id="tit-contato" style="color:#1e88e5;">Fale com a gente</h2>
+<section id="contato" class="card" aria-labelledby="tit-contato">
+  <h2 id="tit-contato" style="color:#1e88e5;">Fale com a gente</h2>
 
-    <div class="contato-lista">
-      <div>
-        <strong>WhatsApp</strong>
-        <a class="btn wpp" style="display:inline-flex;align-items:center;gap:8px"
-           href="https://wa.me/5592992375285?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20CEAC."
-           target="_blank" rel="noopener">
-          <img src="imagens/whatsapp.png" alt="" style="width:20px;height:20px">
-          Chamar no WhatsApp
-        </a>
-      </div>
-      <div>
-        <strong>E‑mail</strong>
-        <a href="mailto:ceacescolas@gmail.com">ceacescolas@gmail.com</a>
-      </div>
-      <div>
-        <strong>Instagram</strong>
-        <a href="https://instagram.com/ceac.escolas" target="_blank" rel="noopener">@ceac.escolas</a>
-      </div>
-      <div>
-        <strong>Facebook</strong>
-        <a href="https://facebook.com/ceacanacelia" target="_blank" rel="noopener">facebook.com/ceacanacelia</a>
-      </div>
+  <div class="contato-lista">
+    <div>
+      <strong>WhatsApp</strong>
+      <a class="btn wpp" style="display:inline-flex;align-items:center;gap:8px"
+         href="https://wa.me/5592992375285?text=Olá!%20Gostaria%20de%20agendar%20uma%20visita%20ao%20CEAC."
+         target="_blank" rel="noopener">
+        <img src="imagens/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px">
+        Chamar no WhatsApp 1
+      </a>
+      <br>
+      <a class="btn wpp" style="display:inline-flex;align-items:center;gap:8px;margin-top:6px"
+         href="https://wa.me/5592992466835?text=Olá!%20Tenho%20outra%20dúvida%20sobre%20o%20CEAC."
+         target="_blank" rel="noopener">
+        <img src="imagens/whatsapp.png" alt="WhatsApp" style="width:20px;height:20px">
+        Chamar no WhatsApp 2
+      </a>
     </div>
-  </section>
+
+    <div>
+      <strong>E-mail</strong>
+      <a href="mailto:ceacescolas@gmail.com">ceacescolas@gmail.com</a>
+    </div>
+    <div>
+      <strong>Instagram</strong>
+      <a href="https://instagram.com/ceac.escolas" target="_blank" rel="noopener">@ceac.escolas</a>
+    </div>
+    <div>
+      <strong>Facebook</strong>
+      <a href="https://facebook.com/ceacanacelia" target="_blank" rel="noopener">facebook.com/ceacanacelia</a>
+    </div>
+  </div>
+</section>
 
   <!-- ================= MAPA (clicável) ================= -->
   <section class="card" aria-label="Localização">
